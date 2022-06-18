@@ -1,14 +1,3 @@
-"""
-Tic Tac Toe class + game play implementation by Kylie Ying
-YouTube Kylie Ying: https://www.youtube.com/ycubed 
-Twitch KylieYing: https://www.twitch.tv/kylieying 
-Twitter @kylieyying: https://twitter.com/kylieyying 
-Instagram @kylieyying: https://www.instagram.com/kylieyying/ 
-Website: https://www.kylieying.com
-Github: https://www.github.com/kying18 
-Programmer Beast Mode Spotify playlist: https://open.spotify.com/playlist/4Akns5EUb3gzmlXIdsJkPs?si=qGc4ubKRRYmPHAJAIrCxVQ 
-"""
-
 import math
 import time
 from player import HumanPlayer, RandomComputerPlayer, SmartComputerPlayer
@@ -43,24 +32,24 @@ class TicTacToe():
         return False
 
     def winner(self, square, letter):
-        # check the row
+        
         row_ind = math.floor(square / 3)
         row = self.board[row_ind*3:(row_ind+1)*3]
-        # print('row', row)
+        
         if all([s == letter for s in row]):
             return True
         col_ind = square % 3
         column = [self.board[col_ind+i*3] for i in range(3)]
-        # print('col', column)
+        
         if all([s == letter for s in column]):
             return True
         if square % 2 == 0:
             diagonal1 = [self.board[i] for i in [0, 4, 8]]
-            # print('diag1', diagonal1)
+            
             if all([s == letter for s in diagonal1]):
                 return True
             diagonal2 = [self.board[i] for i in [2, 4, 6]]
-            # print('diag2', diagonal2)
+           
             if all([s == letter for s in diagonal2]):
                 return True
         return False
@@ -96,8 +85,8 @@ def play(game, x_player, o_player, print_game=True):
             if game.current_winner:
                 if print_game:
                     print(letter + ' wins!')
-                return letter  # ends the loop and exits the game
-            letter = 'O' if letter == 'X' else 'X'  # switches player
+                return letter 
+            letter = 'O' if letter == 'X' else 'X'  
 
         time.sleep(.8)
 
